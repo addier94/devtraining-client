@@ -45,7 +45,8 @@ export default {
   },
   plugins: [
     '~/plugins/vue-placeholders.js',
-    '~/plugins/vue-observe-visibility.client.js'
+    '~/plugins/vue-observe-visibility.client.js',
+    { src: "~/plugins/google-maps", ssr: true }
   ],
   /*
    ** Auto import components
@@ -91,5 +92,7 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    transpile: [/^vue2-google-maps($|\/)/]
+  },
 }

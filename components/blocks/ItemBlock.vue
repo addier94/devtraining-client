@@ -11,7 +11,7 @@
       v-if="bootcamp.cover_image"
       :src="bootcamp.cover_image"
       :alt="bootcamp.title"/>
-    <img v-else :src="bootcamp.photo" :alt="bootcamp.name"/>
+    <img v-else :src="bootcamp.photo || 'https://images.pexels.com/photos/3945356/pexels-photo-3945356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'" :alt="bootcamp.name"/>
   </div>
   <div class="content">
     <nuxt-link
@@ -43,7 +43,7 @@
         <span>
           <!-- <comments-icon /> -->
           <font-awesome-icon icon="home"  style="font-size: 22px; color:red"/>
-          {{ bootcamp.courses.length }}
+          {{ bootcamp.courses.length || '' }}
         </span>
       </div>
       <time>jun 23</time>
@@ -53,13 +53,9 @@
 </template>
 
 <script>
-import HeartIcon from '@/assets/icons/heart.svg?inline'
-import CommentsIcon from '@/assets/icons/comments.svg?inline'
 
 export default {
   components: {
-    HeartIcon,
-    CommentsIcon
   },
   props: {
     bootcamp: {

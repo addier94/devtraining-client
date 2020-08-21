@@ -34,7 +34,7 @@
     </template>
     <template v-else>
       <div class="article-cards-wrapper">
-        <bootcamp-item-block 
+        <item-block 
           v-for="(bootcamp, i) in bootcamps"
           :key="bootcamp._id"
           v-observe-visibility="
@@ -44,7 +44,7 @@
           class="article-card-block"/>
       </div>
     </template>
-    <template v-if="$fetchState.pending && bootcamp.length">
+    <template v-if="$fetchState.pending && bootcamps.length">
       <div class="article-cards-wrapper">
         <content-placeholders
           v-for="p in 30"
@@ -61,12 +61,12 @@
 </template>
 
 <script>
-import BootcampItemBlock from '@/components/blocks/BootcampItemBlock'
+import ItemBlock from '@/components/blocks/ItemBlock'
 import InlineErrorBlock from '@/components/blocks/InlineErrorBlock'
 
 export default {
   components: {
-    BootcampItemBlock,
+    ItemBlock,
     InlineErrorBlock
   },
   async fetch() {

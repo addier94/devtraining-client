@@ -1,30 +1,21 @@
 <template>
-  <div>
-    fuckug single bootcamp
+  <div class="page-wrapper">
+      <single-bootcamp-block />
   </div>
 </template>
 
 <script>
+import SingleBootcampBlock from '@/components/blocks/SingleBootcampBlock'
 export default {
-  async fetch() {
-    const bootcamp = await fetch(
-      `http://localhost:5000/api/v1/bootcamps/${this.$route.params.bootcamp}`
-    ).then((res) => res.json())
-console.log('fuckug single bootcamp ', bootcamp)
-    if (bootcamp._id && bootcamp.slug === this.$route.params.slug) {
-      this.bootcamp = bootcamp
-    } else {
-      // set status code on server
-      if (process.server) {
-        this.$nuxt.context.res.statusCode = 404
-      }
-      throw new Error('Bootcamp no encontrado')
-    }
+  components:{
+    SingleBootcampBlock
   },
-  data() {
-    return {
-      bootcamp: {}
-    }
-  }
 }
 </script>
+<style lang="scss" scoped>
+.page-wrapper {
+  max-width: $screen-xl;
+  margin: auto;
+  padding: 1rem;
+}
+</style>
