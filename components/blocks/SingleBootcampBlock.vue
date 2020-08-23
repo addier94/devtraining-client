@@ -75,10 +75,12 @@
           <p class="qualification">{{ bootcamp.averageRating }}</p>
           <p>de 10 estrellas</p>
         </div>
-        <a class="nav-aside read-reviews" href="#">
+        <nuxt-link :to="{ name: 'bootcamps-slug-bootcamp-review',
+                          params: { bootcamp: bootcamp._id, path: 'review' } }"
+          class="nav-aside read-reviews" href="#">
           <font-awesome-icon icon="comments" style="font-size: 22px"/>
             Leer Calificaciones
-        </a>
+        </nuxt-link>
         <a class="nav-aside write-comment" href="#">
           <font-awesome-icon icon="pencil-alt" style="font-size: 22px"/>
             Escribir comentario
@@ -142,6 +144,7 @@ export default {
 
     if (bootcamp.data._id && bootcamp.data.slug === this.$route.params.slug) {
       this.bootcamp = bootcamp.data;
+      this.$store.commit('SET_CURRENT_BOOTCAMP', this.bootcamp)
       this.getLocation();
     } else {
       if (process.server) {
@@ -166,12 +169,11 @@ export default {
       this.coordinates.lng = this.bootcamp.location.coordinates[1];
     }
   },
-  activated() {
-    // Call fetch again if last fetch more than 60 sec ago
-    if (this.$fetchState.timestamp <= Date.now() - 60000) {
-      this.$fetch()
-    }
-  }
+  // activated() {
+  //   if (this.$fetchState.timestamp <= Date.now() - 60000) {
+  //     this.$fetch()
+  //   }
+  // }
 }
 </script>
 
@@ -184,7 +186,7 @@ export default {
   // grid-template-rows: 1fr;
   grid-template-areas: "main main aside";
   grid-gap: $text-3xl;
-  .main{
+  .main {
     grid-area: main;
     .title{
       font-size: $text-4xl;
@@ -269,5 +271,19 @@ export default {
       border: 1px solid $primary-dark;
     }
   }
+  @media (max-width: $screen-md){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: 1fr;
+    grid-template-areas: "main aside";
+    grid-gap: $text-base;
+  }
+  @media (max-width: $screen-sm){
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    // grid-template-rows: 1fr;
+    grid-template-areas: "main";
+  }
 }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
 <nuxt-link
   :to="{
-    name: 'slug-bootcamp',
+    name: 'bootcamps-slug-bootcamp',
     params: { slug: bootcamp.slug, bootcamp: bootcamp._id }
   }"
   tag="article"
@@ -16,8 +16,8 @@
   <div class="content">
     <nuxt-link
       :to="{
-        name: 'slug-bootcamp',
-        params: { slug: bootcamp.slug, bootcamp: bootcamp._id}
+        name: 'bootcamps-slug-bootcamp',
+        params: { slug: bootcamp.slug, bootcamp: bootcamp._id }
       }">
       <h1>{{ bootcamp.name }}</h1>
       <div>
