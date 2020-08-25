@@ -10,6 +10,20 @@
             {{ link.name }}
           </nuxt-link>
         </li>
+        <li class="nav-item dropdown">
+          <a @click="activeDrop = !activeDrop" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+            <i class="fas fa-user" aria-hidden="true"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+              <font-awesome-icon icon="user" style="font-size: 20px" class="mr-2"/>
+               Cuenta
+          </font></font></a>
+          <div class="dropdown-menu" :class="activeDrop ? 'display-block' : ''">
+            <a class="dropdown-item" href="manage-bootcamp.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administrar Bootcamp</font></font></a>
+            <a class="dropdown-item" href="manage-reviews.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administrar reseñas</font></font></a>
+            <a class="dropdown-item" href="manage-account.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administrar cuenta</font></font></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt" aria-hidden="true"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Cerrar sesión</font></font></a>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -32,14 +46,42 @@ export default {
         {
           name: 'Iniciar sesion',
           slug: 'login'
+        },
+        {
+          name: 'Registrarse',
+          slug: 'register'
         }
-      ]
+      ],
+      activeDrop: false 
+    }
+  },
+  methods: {
+    amesssage() {
+      alert('shet')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.dropdown{
+  position: relative;
+  box-shadow: none;
+  .dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 2.8rem;
+    left: -4rem;
+    width: auto!important;
+    z-index: 999;
+    background: $surface-color;
+    font-size: .8rem;
+    text-transform: lowercase;
+  }
+  .display-block{
+    display: block;
+  }
+}
 header {
   max-width: $screen-xl;
   margin: auto;

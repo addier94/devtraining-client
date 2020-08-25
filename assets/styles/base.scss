@@ -63,7 +63,7 @@ h6 {
   font-weight: 400;
 }
 .bg-primary{
-  background: #6e87d2;
+  background: $primary-color;
   color: #eff4f7;
 }
 .text-gray{
@@ -78,6 +78,10 @@ h6 {
 .bg-white{
   background: $surface-color;
 }
+.border-bottom-black{
+  border-bottom: 1px solid $gray-color !important;
+}
+
 .btn-primary {
   box-shadow: $small-shadow;
   padding: 0.25rem 1rem;
@@ -971,10 +975,6 @@ h6 {
   text-align: center !important;
 }
 
-.text-primary {
-  color: #0d6efd !important;
-}
-
 .text-secondary {
   color: #6c757d !important;
 }
@@ -1041,10 +1041,6 @@ h6 {
 
 .lh-lg {
   line-height: 2 !important;
-}
-
-.bg-primary {
-  background-color: #0d6efd !important;
 }
 
 .bg-secondary {
