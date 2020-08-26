@@ -7,6 +7,7 @@
 <script>
 import SingleBootcampBlock from '@/components/blocks/SingleBootcampBlock'
 export default {
+  // middleware: 'auth',
   components:{
     SingleBootcampBlock
   },

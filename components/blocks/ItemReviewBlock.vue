@@ -41,7 +41,7 @@ export default {
   },
   props: {
     reviews: {
-      type: Object,
+      type: Array,
       default: null
     }
   },
@@ -51,7 +51,7 @@ export default {
   methods: {
     totalRating () {
       if (!this.getRating) {
-        const url = this.$axios.$get(`http://localhost:5000/api/v1/bootcamps/${this.$route.params.bootcamp}`).then(res => {
+        const url = this.$axios.$get(`api/v1/bootcamps/${this.$route.params.bootcamp}`).then(res => {
           this.getRating = res.data.averageRating;
         })
       } else {

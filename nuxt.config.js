@@ -46,7 +46,9 @@ export default {
   plugins: [
     '~/plugins/vue-placeholders.js',
     '~/plugins/vue-observe-visibility.client.js',
-    { src: "~/plugins/google-maps", ssr: true }
+    { src: "~/plugins/google-maps", ssr: true },
+    {src: '~/plugins/vuelidate'},
+    {src: '~/plugins/toasted', ssr: false},
   ],
   /*
    ** Auto import components
@@ -68,6 +70,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     ['nuxt-fontawesome', {
       imports: [
         {
@@ -87,7 +90,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:5000'
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

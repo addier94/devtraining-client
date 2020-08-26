@@ -10,7 +10,7 @@
             {{ link.name }}
           </nuxt-link>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" v-if="isAuth">
           <a @click="activeDrop = !activeDrop" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
             <i class="fas fa-user" aria-hidden="true"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
               <font-awesome-icon icon="user" style="font-size: 20px" class="mr-2"/>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import NuxtIcon from '@/assets/icons/nuxt.svg?inline'
 
 export default {
@@ -55,9 +56,16 @@ export default {
       activeDrop: false 
     }
   },
+  computed: {
+    ...mapGetters({
+      'user': 'auth/authUser',
+      'isAuth': 'auth/isAuthenticated',
+      'isAdmin': 'auth/isAdmin'
+    })
+  },
   methods: {
-    amesssage() {
-      alert('shet')
+    logout() {
+      this.$store.dispatch('auth/logout').then(() => this.$router.push('/login'))
     }
   }
 }

@@ -82,6 +82,12 @@ h6 {
   border-bottom: 1px solid $gray-color !important;
 }
 
+.help-error-input {
+  display: block;
+  font-size: .75rem;
+  margin-top: .10rem;
+}
+
 .btn-primary {
   box-shadow: $small-shadow;
   padding: 0.25rem 1rem;
