@@ -118,6 +118,8 @@
 <script>
 import { required, email, minLength, url, sameAs } from 'vuelidate/lib/validators'
 export default {
+  middleware: "auth",
+  auth: 'guest',
   data() {
     return {
       form: {

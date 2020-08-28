@@ -3,7 +3,7 @@
     <div class="main">
       <nuxt-link class="btn-primary" :to="{ name: 'bootcamps-slug-bootcamp',
                 params: { slug: this.$route.params.slug, bootcamp: this.$route.params.bootcamp } }">
-        <font-awesome-icon class="text-primary"  icon="angle-left"  style="font-size: 22px; color:green"/>
+        <font-awesome-icon class="text-primary"  icon="angle-left"  style="font-size: 22px; color:#6e87d2;"/>
         Bootcamp
       </nuxt-link>
         <h1 class="my-3 text-1 font-weight-400">DevWorks Bootcamp Reviews</h1>
@@ -24,7 +24,7 @@
         </div>
         <div class="text-center">
           <a href="" class="btn-primary">
-            <font-awesome-icon class="text-primary"  icon="pencil-alt"  style="font-size: 22px; color:green"/>
+            <font-awesome-icon class="text-primary"  icon="pencil-alt"  style="font-size: 22px; color:#6e87d2;"/>
             Calificar este bootcamp</a>
         </div>
       </div>

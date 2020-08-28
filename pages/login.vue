@@ -64,7 +64,7 @@
 import { required, email } from 'vuelidate/lib/validators'
 export default {
   middleware: "auth",
-  middleware: 'guest',
+  auth: 'guest',
   data () {
     return {
       form: {
@@ -108,7 +108,7 @@ export default {
               password: this.form.password
             }
           });
-          // this.$router.push("/bootcamps");
+          this.$router.push("/bootcamps");
         }
       } catch (err) {
         this.$toasted.error(err, {duration: 3000})
