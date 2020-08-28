@@ -45,7 +45,7 @@
                   type="submit"
                   value="Iniciar sesión"
                   class="btn btn-primary btn-block"
-                  @click.prevent="login"
+                  @click.prevent="onLogin"
                   >
                   <!-- :disabled="$v.form.$invalid" -->
                   
@@ -63,7 +63,8 @@
 <script>
 import { required, email } from 'vuelidate/lib/validators'
 export default {
-   middleware: 'guest',
+  middleware: "auth",
+  middleware: 'guest',
   data () {
     return {
       form: {
@@ -89,12 +90,28 @@ export default {
     }
   },
   methods: {
-    login() {
-      this.$v.form.$touch()
-      if (this.isFormValid) {
-        this.$store.dispatch('auth/login', this.form)
-          .then(() => this.$router.push('/'))
-          .catch(() => this.$toasted.error('Correo o Contraseña incorrecto', {duration: 3000}))
+    // login() {
+    //   this.$v.form.$touch()
+    //   if (this.isFormValid) {
+    //     this.$store.dispatch('auth/login', this.form)
+    //       .then(() => this.$router.push('/'))
+    //       .catch(() => this.$toasted.error('Correo o Contraseña incorrecto', {duration: 3000}))
+    //   }
+    // },
+    async onLogin() {
+      try{
+        this.$v.form.$touch()
+        if (this.isFormValid) {
+          let response = await this.$auth.loginWith("local", {
+            data: {
+              email: this.form.email,
+              password: this.form.password
+            }
+          });
+          // this.$router.push("/bootcamps");
+        }
+      } catch (err) {
+        this.$toasted.error(err, {duration: 3000})
       }
     }
   }

@@ -100,4 +100,19 @@ export default {
   build: {
     transpile: [/^vue2-google-maps($|\/)/]
   },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/login', method: 'post', propertyName: 'token' },
+          user: { url: '/api/v1/auth/me', method: 'get', propertyName: 'user' },
+          logout: { url: '/api/v1/auth/logout', method: 'post' },
+          // login: { url: '/api/v1/auth/login', method: 'post', propertyName: "token" },
+          // logout: true
+        }
+      }
+    }
+  }
+
 }
