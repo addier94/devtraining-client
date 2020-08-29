@@ -25,20 +25,20 @@
             role="button"
             data-toggle="dropdown"
           >
-            <font-awesome-icon class=""  icon="user"  style="font-size: 18px; margin-bottom: 4px;"/> {{ $auth.$state.user.name || 'perfil' }}
+            <font-awesome-icon class=""  icon="user"  style="font-size: 18px; margin-bottom: 6px;"/> {{ $auth.$state.user.name || 'perfil' }}
           </a>
           <div class="dropdown-menu" :class="activeDrop ? 'show' : ''">
             <a class="dropdown-item" href="manage-bootcamp.html"
-              >Manage Bootcamp</a
+              >Administrar Bootcamp</a
             >
             <a class="dropdown-item" href="manage-reviews.html"
-              >Manage Reviews</a
+              >Administrar reseñas</a
             >
             <a class="dropdown-item" href="manage-account.html"
-              >Manage Account</a
+              >Administrar Cuenta</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" @click.prevent="onLogout">
+            <a class="dropdown-item" href="#" @click="onLogout">
               <font-awesome-icon icon="sign-out-alt"  style="font-size: 16px; margin-bottom:2px;"/> Cerrar Sesion
             </a>
           </div>
@@ -53,11 +53,15 @@
           <a class="nav-link" href="#">|</a>
         </li>
         <li class="nav-item">
-          <nuxt-link class="nav-link" to="/register" v-if="!$auth.$state.loggedIn">Registro</nuxt-link>
+          <nuxt-link class="nav-link" to="/register" v-if="!$auth.$state.loggedIn">
+            <font-awesome-icon class=""  icon="user-plus"  style="font-size: 16px; margin-bottom: 6px;"/>Registro
+          </nuxt-link>
         </li>
         
         <li class="nav-item">
-          <nuxt-link class="nav-link" to="/login" v-if="!$auth.$state.loggedIn">Iniciar Sesion</nuxt-link>
+          <nuxt-link class="nav-link" to="/login" v-if="!$auth.$state.loggedIn">
+            <font-awesome-icon  icon="sign-in-alt"  style="font-size: 16px; margin-bottom: 3px;"/> Iniciar Sesion
+          </nuxt-link>
         </li>
       </ul>
     </div>
