@@ -20,7 +20,9 @@
       <div class="bg-warning dropleft pt-2 pb-3">
         <div class="">
           <div class="d-flex justify-content-center align-items-center pb-4">
-            <p class="rounded-circle bg-primary mr-2 p-2">{{ getTotalRating }}</p>
+            <p class="rounded-circle bg-primary mr-2 p-2">
+              {{ (getTotalRating.toString().length === 1) ? `${getTotalRating}.0` : getTotalRating }}
+            </p>
             <p>Rating</p>
           </div>
           <div class="text-center">
@@ -44,13 +46,11 @@ export default {
   },
   props: {
     reviews: {
-      type: Object,
       default: null
     }
   },
   created(){
     this.totalRating();
-    console.log('type in props ', this.reviews)
   },
   methods: {
     totalRating () {

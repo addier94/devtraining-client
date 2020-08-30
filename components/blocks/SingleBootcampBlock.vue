@@ -72,7 +72,9 @@
         <img class="image-aside" :src="bootcamp.photo || 'https://images.pexels.com/photos/3945356/pexels-photo-3945356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'" alt="">
         <div class="rating">
           <!-- <p class="qualification-text">Calificación</p> -->
-          <p class="qualification">{{ bootcamp.averageRating }}</p>
+          <p class="qualification">
+            {{ (bootcamp.averageRating.toString().length === 1) ? `${bootcamp.averageRating}.0` : bootcamp.averageRating }}
+          </p>
           <p>de 10 estrellas</p>
         </div>
         <nuxt-link :to="{ name: 'bootcamps-slug-bootcamp-review',
