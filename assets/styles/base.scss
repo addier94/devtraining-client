@@ -66,6 +66,13 @@ h6 {
   background: $primary-color;
   color: #eff4f7;
 }
+.bg-white{
+  background: $surface-color;
+}
+.bg-surface{
+  background: $surface-color!important;
+  border: 1px solid transparent!important;
+}
 .text-gray{
   color: $gray-color;
 }
@@ -74,9 +81,6 @@ h6 {
 }
 .text-yellow {
   color: $on-elevated-surface-color;
-}
-.bg-white{
-  background: $surface-color;
 }
 .border-bottom-black{
   border-bottom: 1px solid $gray-color !important;

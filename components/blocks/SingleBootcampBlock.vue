@@ -146,7 +146,7 @@ export default {
 
     if (bootcamp.data._id && bootcamp.data.slug === this.$route.params.slug) {
       this.bootcamp = bootcamp.data;
-      this.$store.commit('SET_CURRENT_BOOTCAMP', this.bootcamp)
+      this.$store.commit('bootcamp/SET_SINGLE_BOOTCAMP', this.bootcamp)
       this.getLocation();
     } else {
       if (process.server) {

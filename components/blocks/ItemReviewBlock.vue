@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     totalRating () {
-      if (!this.$store.state.currentBootcamp) {
+      if (!this.$store.state.singleBootcamp) {
         const url = this.$axios.$get(`api/v1/bootcamps/${this.$route.params.bootcamp}`).then(res => {
           this.getTotalRating = res.data.averageRating;
           this.nameBootcamp = res.data.name

@@ -73,7 +73,15 @@ export default {
     const bootcamps = await fetch(`http://localhost:5000/api/v1/bootcamps`)
       .then((res) => res.json())
 
+    if (bootcamps.success) {
       this.bootcamps = this.bootcamps.concat(bootcamps.data)
+      this.$store.commit('bootcamp/SET_BOOTCAMPS', bootcamps.data)
+    } else {
+      if (process.server) {
+        this.$nuxt.context.res.statusCode = 404
+      }
+      throw new Error('Bootcamp no encontrado')
+    }
   },
   data() {
     return {
