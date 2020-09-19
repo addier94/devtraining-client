@@ -1,4 +1,7 @@
 export default {
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL || 'http://localhost:5000'
+  },
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
@@ -48,7 +51,7 @@ export default {
     '~/plugins/vue-observe-visibility.client.js',
     { src: "~/plugins/google-maps", ssr: true },
     {src: '~/plugins/vuelidate'},
-    {src: '~/plugins/toasted', ssr: false},
+    {src: '~/plugins/toastr', ssr: false},
   ],
   /*
    ** Auto import components

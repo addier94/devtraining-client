@@ -1,7 +1,7 @@
 <template>
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img :src="bootcamp.photo || 'https://images.pexels.com/photos/3945356/pexels-photo-3945356.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'" class="card-img" :alt="bootcamp.name" />
+      <img :src="imageUrl" class="card-img" :alt="bootcamp.name" />
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -33,6 +33,21 @@ export default {
     bootcamp: {
       type: Object,
       default: null
+    },
+    bootcampImage: {
+      type: Object,
+      default: null
+    }
+  },
+  computed: {
+    imageUrl() {
+      let path = '';
+      if(this.bootcampImage && this.bootcampImage.bootcampId === this.bootcamp._id) {
+        path = `${this.$config.baseURL}/uploads/${this.bootcampImage.image}`;
+      } else {
+        path = `${this.$config.baseURL}/uploads/${this.bootcamp.photo}`
+      }
+      return path;
     }
   }
 }
