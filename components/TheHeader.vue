@@ -28,7 +28,7 @@
             <font-awesome-icon class=""  icon="user"  style="font-size: 18px; margin-bottom: 6px;"/> {{ $auth.$state.user.name || 'perfil' }}
           </a>
           <div class="dropdown-menu" :class="activeDrop ? 'show' : ''">
-            <nuxt-link class="dropdown-item" :to="{ name: 'admin-user',
+            <nuxt-link class="dropdown-item" :to="{ name: 'admin-user-bootcamp',
                           params: { user: $auth.$state.user._id } }">
               Administrar Bootcamp
             </nuxt-link

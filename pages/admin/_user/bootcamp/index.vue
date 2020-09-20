@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-8 m-auto">
       <div class="card bg-surface py-2 px-4">
-        <div class="card-body mb-2" v-for="bootcamp in bootcamps" :key="bootcamp._id">
+        <div class="card-body mb-2">
           <h1 class="mb-4">{{ bootcamp.name }}</h1>
           <div class="card">
 
@@ -23,8 +23,9 @@
             </div>
             <!-- <input type="submit" class="btn btn-light btn-block" value="Subir imagen">
           </form> -->
-          <a href="add-bootcamp.html" class="btn btn-primary btn-block"
-            >Editar los Detalles del Bootcamp</a
+          <nuxt-link :to="{ name: 'admin-user-bootcamp-update',
+                          params: { user: $auth.$state.user._id }}" class="btn btn-primary btn-block"
+            >Editar los Detalles del Bootcamp</nuxt-link
           >
           <a href="manage-courses.html" class="btn btn-secondary btn-block" 
             >Gestionar cursos</a
@@ -45,29 +46,28 @@
 
 <script>
 import BootcampsItemBlock from '@/components/blocks/BootcampsItemBlock'
+import { mapState } from 'vuex'
 export default {
   components: {
     BootcampsItemBlock
   },
   data(){
     return {
-      bootcamps: "",
       selectedFile: null,
       fileName: null,
+      bootcamp: '',
       bootcampImage: {}
     }
   },
+  // computed: {
+  //   ...mapState({
+  //     bootcamp: ({bootcamp}) => bootcamp.bootcampByUserId
+  //   })
+  // },
 
-  async asyncData({ $axios, params }) {
-    try {
-      let responseBootcamps = await $axios.$get(`/api/v1/bootcamps/user/${params.user}`);
-
-      return {
-        bootcamps: responseBootcamps.data
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  async created() {
+    let response = await this.$store.dispatch('bootcamp/fetchBootcampByUserId', this.$route.params.user)
+    this.bootcamp = response;
   },
 
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="row no-gutters">
+  <div class="row no-gutters" v-if="bootcamp">
     <div class="col-md-4">
       <img :src="imageUrl" class="card-img" :alt="bootcamp.name" />
     </div>
@@ -31,7 +31,6 @@
 export default {
   props: {
     bootcamp: {
-      type: Object,
       default: null
     },
     bootcampImage: {

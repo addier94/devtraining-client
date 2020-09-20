@@ -1,6 +1,7 @@
 export default {
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || 'http://localhost:5000'
+    baseURL: process.env.BASE_URL || 'http://localhost:5000',
+    appName: 'Camper'
   },
   /*
    ** Nuxt rendering mode
